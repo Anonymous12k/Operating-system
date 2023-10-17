@@ -1,0 +1,21 @@
+1)->To create a new process by invoking the appropriate system call.
+Get the process identifier of the currently running process and its respective parent using system calls and display the same using a C program.
+
+ -->source code.....
+
+#include<stdio.h>
+#include<unistd.h>
+int main()
+{
+  printf("Process ID: %d\n", getpid() );
+  printf("Parent Process ID: %d\n", getpid() );
+  return 0;
+}
+-------------------------------------------------------
+Output->
+Process ID: 14880
+Parent Process ID: 14880
+
+--------------------------------
+Process exited after 1.384 seconds with return value 0
+Press any key to continue . . .
