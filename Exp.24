@@ -1,0 +1,58 @@
+24.Develop a C program to simulate C-SCAN disk scheduling algorithm.
+----------------------------------------------Source code-----------------------------------------------------------------
+#include <stdio.h>
+#include <stdlib.h>
+void sort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+
+int main() {
+    int n, head, seek_sequence = 0, max_track;
+
+    printf("Enter the number of disk requests: ");
+    scanf("%d", &n);
+
+    int requests[n];
+
+    printf("Enter the disk request sequence:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &requests[i]);
+    }
+
+    printf("Enter the initial position of the disk head: ");
+    scanf("%d", &head);
+
+    printf("Enter the maximum track number: ");
+    scanf("%d", &max_track);
+
+    sort(requests, n);
+
+    printf("Seek Sequence: %d", head);
+    for (int i = 0; i < n; i++) {
+        if (requests[i] >= head) {
+            seek_sequence += abs(head - requests[i]);
+            head = requests[i];
+            printf(" -> %d", head);
+        }
+}
+    seek_sequence += abs(head - max_track);
+    head = 0;
+    printf(" -> %d", head);
+    for (int i = 0; i < n; i++) {
+        if (requests[i] >= head) {
+            seek_sequence += abs(head - requests[i]);
+            head = requests[i];
+            printf(" -> %d", head);
+        }
+    }
+    printf("\nTotal Seek Time: %d\n", seek_sequence);
+    return 0;
+}
