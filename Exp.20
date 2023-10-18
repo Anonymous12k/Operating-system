@@ -1,7 +1,7 @@
 20. Consider a file system that brings all the file pointers together into an index block. 
 The ith entry in the index block points to the ith block of the file. 
 Design a C program to simulate the file allocation strategy.
----------------------------------------------------------------------Source code-----------------------------------------------------------------------
+----------------------------------------------------------------------Source code-----------------------------------------------------------------------
 #include<stdio.h>
 #include<conio.h>
 #include<stdlib.h>
