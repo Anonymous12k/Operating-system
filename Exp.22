@@ -1,0 +1,38 @@
+22.C program to implement the Disk Scheduling algorithm for First Come First Served
+------------------------------------------------------------------------Source code------------------------------------------
+#include <stdio.h>
+#include <stdlib.h>
+int main() {
+    int n, head, seek_sequence = 0;
+    printf("Enter the number of disk requests: ");
+    scanf("%d", &n);
+    int requests[n];
+    printf("Enter the disk request sequence:\n");
+    for (int i = 0; i < n; i++) {
+    scanf("%d", &requests[i]);
+    }
+    printf("Enter the initial position of the disk head: ");
+    scanf("%d", &head);
+    printf("Seek Sequence: %d", head);
+    for (int i = 0; i < n; i++) {
+        seek_sequence += abs(head - requests[i]);
+        head = requests[i];
+        printf(" -> %d", head);
+    }
+    printf("\nTotal Seek Time: %d\n", seek_sequence);
+    return 0;
+}
+-------------------------------------------------------------------Output-----------------------------------------------------
+Enter the number of disk requests: 2
+
+Enter the disk request sequence:
+2
+3
+Enter the initial position of the disk head: 1
+Seek Sequence: 1 -> 2 -> 3
+Total Seek Time: 2
+
+--------------------------------
+Process exited after 10.58 seconds with return value 0
+Press any key to continue . . .
+
