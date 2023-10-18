@@ -1,6 +1,6 @@
-19. Consider a file system where the records of the file are stored one after another both physically and logically.
+19.Consider a file system where the records of the file are stored one after another both physically and logically.
 A record of the file can only be accessed by reading all the previous records.
-Design a C program to simulate the file allocation strategy.
+Design a C program to simulate the file allocation strategy. 
 ------------------------------------------------------------------Source  code--------------------------------------------------------------------------
 #include<stdio.h>
 #include<conio.h>
