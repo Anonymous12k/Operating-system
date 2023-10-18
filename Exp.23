@@ -1,0 +1,62 @@
+23. Design a C program to simulate SCAN disk scheduling algorithm
+------------------------------------------------------------------------Source  code---------------------------------------------------------
+#include <stdio.h>
+#include <stdlib.h>
+void sort(int arr[], int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = 0; j < n - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+int main() {
+    int n, head, seek_sequence = 0;
+    printf("Enter the number of disk requests: ");
+    scanf("%d", &n);
+    int requests[n];
+    printf("Enter the disk request sequence:\n");
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &requests[i]);
+    }
+    printf("Enter the initial position of the disk head: ");
+    scanf("%d", &head);
+    sort(requests, n);
+    int head_index;
+    for (head_index = 0; head_index < n; head_index++) {
+        if (requests[head_index] >= head) {
+            break;
+        }
+    }
+    printf("Seek Sequence: %d", head);
+    for (int i = head_index; i < n; i++) {
+        seek_sequence += abs(head - requests[i]);
+        head = requests[i];
+        printf(" -> %d", head);
+    }
+    for (int i = head_index - 1; i >= 0; i--) {
+        seek_sequence += abs(head - requests[i]);
+        head = requests[i];
+        printf(" -> %d", head);
+    }
+    printf("\nTotal Seek Time: %d\n", seek_sequence);
+    return 0;
+}
+------------------------------------------------------------------------Output---------------------------------------------------------------------------
+Enter the number of disk requests: 2
+Enter the disk request sequence:
+2
+3
+Enter the initial position of the disk head: 1
+Seek Sequence: 1 -> 2 -> 3
+Total Seek Time: 2
+
+--------------------------------
+Process exited after 9.374 seconds with return value 0
+Press any key to continue . . .
+
+
+
